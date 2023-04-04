@@ -1,0 +1,25 @@
+<div class="container-calculator">
+  <table class="table-calculator">
+    <tbody>
+      <tr>
+        <td class="display" colspan="4">
+          {{
+            displayValue.length > 9
+              ? "..." + displayValue.substring(displayValue.length - 8)
+              : displayValue
+          }}
+        </td>
+      </tr>
+      <tr *ngFor="let block of blocksKeys">
+        <td
+          *ngFor="let button of block"
+          [attr.colspan]="button?.colspan ?? 1"
+          [attr.aria-value]="button.label"
+          (click)="onClick($event)"
+        >
+          {{ button.label }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
